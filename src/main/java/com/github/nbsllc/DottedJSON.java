@@ -4,6 +4,9 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+/**
+ * Convert dotted strings into JSON.
+ */
 public class DottedJSON {
     private List<String> paths;
 
