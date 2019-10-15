@@ -1,4 +1,4 @@
-package com.nbs.dottedjson;
+package com.github.nbsllc;
 
 import org.json.JSONObject;
 import org.testng.annotations.Test;
