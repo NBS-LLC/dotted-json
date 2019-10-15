@@ -4,11 +4,32 @@ import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DottedJSONTest {
+    @Test
+    public void testFloatDataType() {
+        List<String> paths = Collections.singletonList(
+            "height:Float(5.667)"
+        );
+
+        DottedJSON dottedJSON = new DottedJSON(paths);
+        assertThat(dottedJSON.toJSONObject().getFloat("height")).isEqualTo(5.667);
+    }
+
+    @Test
+    public void testIntegerDataType() {
+        List<String> paths = Collections.singletonList(
+            "age:Integer(42)"
+        );
+
+        DottedJSON dottedJSON = new DottedJSON(paths);
+        assertThat(dottedJSON.toJSONObject().getInt("age")).isEqualTo(42);
+    }
+
     @Test
     public void testTestToString() {
         List<String> paths = Arrays.asList(

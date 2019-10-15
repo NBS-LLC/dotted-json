@@ -3,6 +3,8 @@ package com.github.nbsllc;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DottedJSON {
     private List<String> paths;
@@ -26,7 +28,7 @@ public class DottedJSON {
                 } else {
                     JSONObject child = new JSONObject();
                     if (pair.length > 1) {
-                        parent.put(key, pair[1]);
+                        parent.put(key, parseValue(pair[1]));
                     } else {
                         parent.put(key, child);
                     }
@@ -42,5 +44,15 @@ public class DottedJSON {
     @Override
     public String toString() {
         return toJSONObject().toString();
+    }
+
+    private Object parseValue(String value) {
+        Pattern integerPattern = Pattern.compile("Integer\\((.+)\\)");
+        Matcher matcher = integerPattern.matcher(value);
+        if (matcher.find()) {
+            return Integer.valueOf(matcher.group(1));
+        }
+
+        return value;
     }
 }
