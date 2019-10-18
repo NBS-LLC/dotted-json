@@ -7,13 +7,44 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Converts dotted Strings into JSON.
+ * <p>
+ * For example:
+ * <pre>
+ * person.firstName:Sally,
+ * person.lastName:Smith,
+ * person.age:Integer(42)
+ * </pre>
+ * <p>
+ * Becomes:
+ * <pre>
+ * {
+ *   "person": {
+ *     "firstName": "Sally",
+ *     "lastName": "Smith",
+ *     "age": 42
+ *   }
+ * }
+ * </pre>
+ */
 public class DottedJSON {
     private List<String> paths;
 
+    /**
+     * Initializes the class with a collection of dotted Strings.
+     *
+     * @param paths The collection of dotted Strings.
+     */
     public DottedJSON(List<String> paths) {
         this.paths = paths;
     }
 
+    /**
+     * Converts the collection of dotted Strings into a JSONObject.
+     *
+     * @return The JSONObject.
+     */
     public JSONObject toJSONObject() {
         JSONObject root = new JSONObject();
         for (String currentPath : paths) {
@@ -40,6 +71,11 @@ public class DottedJSON {
         return root;
     }
 
+    /**
+     * Converts the collection of dotted Strings into a JSON String.
+     *
+     * @return The JSON String.
+     */
     @Override
     public String toString() {
         return toJSONObject().toString();
