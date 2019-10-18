@@ -8,14 +8,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Converts dotted Strings into JSON.<br />
- * <br />
+ * Converts dotted Strings into JSON.
+ * <p>
  * For example:
  * <pre>
  * person.firstName:Sally,
  * person.lastName:Smith,
  * person.age:Integer(42)
  * </pre>
+ * <p>
  * Becomes:
  * <pre>
  * {
