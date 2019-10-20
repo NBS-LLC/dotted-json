@@ -3,6 +3,8 @@ jdk: openjdk8
 
 jobs:
   include:
+    - script: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+    - script: "mvn test -B"
     - stage: deploy
       deploy:
         provider: script
@@ -10,5 +12,7 @@ jobs:
         skip_cleanup: true
 
 stages:
+  - name: test
+    if: type = pull_request
   - name: deploy
     if: type = push AND branch = master
