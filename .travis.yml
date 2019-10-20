@@ -1,7 +1,14 @@
 language: java
 jdk: openjdk8
 
-deploy:
-  provider: script
-  script: "cp settings.xml $HOME/.m2/settings.xml && mvn deploy"
-  skip_cleanup: true
+jobs:
+  include:
+    - stage: deploy
+      deploy:
+        provider: script
+        script: "cp settings.xml $HOME/.m2/settings.xml && mvn deploy"
+        skip_cleanup: true
+
+stages:
+  - name: deploy
+    if: type = push AND branch = master
