@@ -4,7 +4,6 @@ jdk: openjdk8
 jobs:
   include:
     - stage: test
-      script: "mvn test -B"
     - stage: deploy
       deploy:
         provider: script
