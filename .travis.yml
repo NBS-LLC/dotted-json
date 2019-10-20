@@ -5,6 +5,7 @@ jobs:
   include:
     - stage: test
     - stage: deploy
+      install: skip
       script: skip
       deploy:
         provider: script
