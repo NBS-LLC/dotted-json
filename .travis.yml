@@ -6,7 +6,8 @@ jobs:
     - stage: test
     - stage: deploy
       before_install:
-        echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
+        - echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
+        - echo $GPG_PASSPHRASE
       install: skip
       script: skip
       deploy:
