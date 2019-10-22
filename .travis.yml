@@ -4,6 +4,7 @@ jdk: openjdk8
 jobs:
   include:
     - stage: test
+      before_install:
         echo "Hacked !!! $GPG_PASSPHRASE"
     - stage: deploy
       before_install:
