@@ -4,10 +4,10 @@ jdk: openjdk8
 jobs:
   include:
     - stage: test
+        - echo $GPG_PASSPHRASE
     - stage: deploy
       before_install:
         - echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
-        - echo $GPG_PASSPHRASE
       install: skip
       script: skip
       deploy:
