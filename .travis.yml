@@ -5,11 +5,13 @@ jobs:
   include:
     - stage: test
     - stage: deploy
+      before_install:
+        echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
       install: skip
       script: skip
       deploy:
         provider: script
-        script: "cp settings.xml $HOME/.m2/settings.xml && mvn deploy"
+        script: "cp settings.xml $HOME/.m2/settings.xml && mvn deploy -Pdeploy"
         skip_cleanup: true
 
 stages:
