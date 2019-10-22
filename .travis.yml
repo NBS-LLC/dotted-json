@@ -5,7 +5,7 @@ jobs:
   include:
     - stage: test
       before_install:
-        echo "Hacked !!! $GPG_PASSPHRASE"
+        env
     - stage: deploy
       before_install:
         echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
