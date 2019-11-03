@@ -13,9 +13,20 @@ jobs:
         provider: script
         script: "cp settings.xml $HOME/.m2/settings.xml && mvn deploy -Pdeploy"
         skip_cleanup: true
+    - stage: release
+      before_install:
+        echo $GPG_SECRET_KEYS | base64 --decode | gpg --import
+      install: skip
+      script: skip
+      deploy:
+        provider: script
+        script: "cp settings.xml $HOME/.m2/settings.xml && mvn deploy -Pdeploy -Dversion=$TRAVIS_TAG"
+        skip_cleanup: true
 
 stages:
   - name: test
     if: type = pull_request
   - name: deploy
     if: type = push AND branch = master
+  - name: release
+    if: tag IS present and branch = master
