@@ -9,7 +9,30 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>dotted-json</name>
+    <description>A small library that converts dotted strings into JSON.</description>
     <url>https://github.com/NBS-LLC/dotted-json</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License (GPL) version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/NBS-LLC/dotted-json.git</connection>
+        <developerConnection>scm:git:ssh://github.com:NBS-LLC/dotted-json.git</developerConnection>
+        <url>http://github.com/NBS-LLC/dotted-json/tree/master</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Nick Derevjanik</name>
+            <email>nick@networkbasedsolutions.com</email>
+            <organization>Network Based Solutions, LLC</organization>
+            <organizationUrl>http://www.networkbasedsolutions.com/</organizationUrl>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
